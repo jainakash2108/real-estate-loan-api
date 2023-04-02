@@ -1,0 +1,30 @@
+version: '3.9'
+services:
+  db:
+    container_name: loanapi-db
+    image: postgres:15-alpine
+    restart: always
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_PASSWORD=loanapi
+      - POSTGRES_DB=loanapi
+      - POSTGRES_USER=loanapi
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -U loanapi" ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+  app:
+    container_name: loanapi-app
+    image: loanapi:latest
+    ports:
+      - "8089:8089"
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5432/loanapi
+      - SPRING_DATASOURCE_USERNAME=loanapi
+      - SPRING_DATASOURCE_PASSWORD=loanapi
+      - SPRING_PROFILES_ACTIVE=docker
+    depends_on:
+      db:
+        condition: service_healthy

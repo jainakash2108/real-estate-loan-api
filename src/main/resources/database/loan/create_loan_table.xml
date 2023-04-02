@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-2.0.xsd">
+
+    <changeSet id="create_loan_table" author="akash.jain">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="loan"/>
+            </not>
+        </preConditions>
+        <createTable tableName="loan">
+            <column name="id" type="bigserial" autoIncrement="true" startWith="1" incrementBy="1">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_loan"/>
+            </column>
+            <column name="customer_ssn" type="text">
+                <constraints nullable="false"/>
+            </column>
+            <column name="loan_amount" type="DECIMAL(22, 2)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="equity_amount" type="DECIMAL(22, 2)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="salary_amount" type="DECIMAL(22, 2)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+        <addForeignKeyConstraint
+                baseTableName="loan"
+                baseColumnNames="customer_ssn"
+                constraintName="fk_loan_user_info"
+                referencedTableName="user_info"
+                referencedColumnNames="customer_ssn"
+                deleteCascade="true"/>
+        <rollback>
+            <dropTable tableName="loan"/>
+        </rollback>
+    </changeSet>
+    <changeSet id="create-index-on-customer_ssn-column-loan" author="akash.jain">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <indexExists tableName="loan" indexName="ix_loan_customer_ssn"/>
+            </not>
+        </preConditions>
+        <createIndex tableName="loan" indexName="ix_loan_customer_ssn">
+            <column name="customer_ssn"/>
+        </createIndex>
+        <rollback>
+            <dropIndex tableName="loan" indexName="ix_loan_customer_ssn"/>
+        </rollback>
+    </changeSet>
+</databaseChangeLog>

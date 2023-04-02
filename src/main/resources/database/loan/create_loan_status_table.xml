@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-2.0.xsd">
+
+    <changeSet id="create_loan_status_table" author="akash.jain">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="loan_status"/>
+            </not>
+        </preConditions>
+        <createTable tableName="loan_status">
+            <column name="id" type="bigserial" autoIncrement="true" startWith="1" incrementBy="1">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_loan_status"/>
+            </column>
+            <column name="loan_id" type="bigserial">
+                <constraints nullable="false"/>
+            </column>
+            <column name="status" type="text">
+                <constraints nullable="false"/>
+            </column>
+            <column name="description" type="text">
+                <constraints nullable="false"/>
+            </column>
+            <column name="status_by" type="text">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_at" type="timestamp">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+        <addForeignKeyConstraint
+                baseTableName="loan_status"
+                baseColumnNames="loan_id"
+                constraintName="fk_loan_status_loan"
+                referencedTableName="loan"
+                referencedColumnNames="id"
+                deleteCascade="true"/>
+        <rollback>
+            <dropTable tableName="loan_status"/>
+        </rollback>
+    </changeSet>
+    <changeSet id="create-index-on-loan_id-column-loan_status" author="akash.jain">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <indexExists tableName="loan_status" indexName="ix_loan_status_loan_id"/>
+            </not>
+        </preConditions>
+        <createIndex tableName="loan_status" indexName="ix_loan_status_loan_id">
+            <column name="loan_id"/>
+        </createIndex>
+        <rollback>
+            <dropIndex tableName="loan_status" indexName="ix_loan_status_loan_id"/>
+        </rollback>
+    </changeSet>
+</databaseChangeLog>

@@ -1,0 +1,97 @@
+[
+  {
+    "id": 4,
+    "loanAmount": 100000,
+    "equityAmount": 100000,
+    "salaryAmount": 100000,
+    "status": [
+      {
+        "status": "APPROVED",
+        "description": "Loan application has been approved",
+        "createdAt": "2023-04-01T18:16:48.376979Z"
+      },
+      {
+        "status": "IN_REVIEW",
+        "description": "Loan application under review",
+        "createdAt": "2023-04-01T18:16:48.375825Z"
+      },
+      {
+        "status": "SUBMITTED",
+        "description": "Loan application submitted",
+        "createdAt": "2023-04-01T18:16:48.374751Z"
+      }
+    ]
+  },
+  {
+    "id": 5,
+    "loanAmount": 100000,
+    "equityAmount": 100000,
+    "salaryAmount": 100000,
+    "status": [
+      {
+        "status": "REJECTED",
+        "description": "Loan application has been approved",
+        "createdAt": "2023-04-01T18:16:48.380822Z"
+      },
+      {
+        "status": "IN_REVIEW",
+        "description": "Loan application under review",
+        "createdAt": "2023-04-01T18:16:48.379511Z"
+      },
+      {
+        "status": "SUBMITTED",
+        "description": "Loan application submitted",
+        "createdAt": "2023-04-01T18:16:48.378421Z"
+      }
+    ]
+  },
+  {
+    "id": 6,
+    "loanAmount": 100000,
+    "equityAmount": 100000,
+    "salaryAmount": 100000,
+    "status": [
+      {
+        "status": "IN_REVIEW",
+        "description": "Loan application under review",
+        "createdAt": "2023-04-01T18:16:48.383128Z"
+      },
+      {
+        "status": "SUBMITTED",
+        "description": "Loan application submitted",
+        "createdAt": "2023-04-01T18:16:48.382050Z"
+      }
+    ]
+  },
+  {
+    "id": 7,
+    "loanAmount": 100000,
+    "equityAmount": 100000,
+    "salaryAmount": 100000,
+    "status": [
+      {
+        "status": "SUBMITTED",
+        "description": "Loan application submitted",
+        "createdAt": "2023-04-01T18:16:48.382050Z"
+      }
+    ]
+  },
+  {
+    "id": 8,
+    "loanAmount": 100000,
+    "equityAmount": 100000,
+    "salaryAmount": 100000,
+    "status": [
+      {
+        "status": "WITHDRAW",
+        "description": "Loan application submitted",
+        "createdAt": "2023-04-01T18:16:48.382050Z"
+      },
+      {
+        "status": "SUBMITTED",
+        "description": "Loan application submitted",
+        "createdAt": "2023-04-01T18:16:48.382050Z"
+      }
+    ]
+  }
+]

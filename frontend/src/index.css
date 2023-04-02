@@ -1,0 +1,41 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+header {
+  text-align: center;
+}
+
+.progress-bar {
+  height: 10px;
+  background-color: #eee;
+  border-radius: 10px;
+}
+
+.progress-bar-inner {
+  height: 100%;
+  border-radius: 10px;
+  transition: width 0.3s ease-in-out;
+}
+
+.status-approved .progress-bar-inner {
+  background-color: #4CAF50;
+}
+
+.status-in-review .progress-bar-inner {
+  background-color: #FFC107;
+}
+
+.status-rejected .progress-bar-inner {
+  background-color: #F44336;
+}
